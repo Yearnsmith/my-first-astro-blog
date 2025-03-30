@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogPostPreview from '../components/BlogPostPreview.astro';
+import { getEntry, render } from 'astro:content';
+
+const postsGlob = import.meta.glob('./posts/*.md', { eager: true });
+const allPosts = Object.values(postsGlob);
+---
+<style>
+	ul {
+		list-style-type: none;
+		padding-inline: 0;
+		max-width: 65ch;
+		margin-inline: auto;
+	}
+	hr {
+		width: 85vw;
+		max-width: 55ch;
+	}
+</style>
+<BaseLayout pageTitle={"My Blog"}>
+	<ul>
+	{
+		allPosts.map((p, i) => (
+			<>
+				<BlogPostPreview
+					url={p.url}
+					title={p.frontmatter.title}
+					description={p.frontmatter.description}
+					previewText={p.frontmatter.preview}
+				/>
+				{i < (allPosts.length - 1) && (<hr/>)}
+			</>
+		))
+	}
+	</ul>
+</BaseLayout>
+
+

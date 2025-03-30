@@ -1,0 +1,37 @@
+---
+import '../styles/global.css';
+import BlogLayout from './BlogLayout.astro';
+const { props } = Astro;
+
+const { frontmatter: blog } = props;
+const pubDate = new Date(blog.pubDate)
+  .toLocaleDateString('en-au', {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+---
+<style>
+  article {
+    header {
+      background-image: var(--backgroundImage);
+      background-size: cover;
+      height: 25vh;
+    }
+  }
+</style>
+<BlogLayout>
+  <article>
+    <header style={`--backgroundImage: url('${blog.image.url}')`}>
+      <h1>{blog.title}</h1>
+      <p>Written by {blog.author}</p>
+      <p>{pubDate}</p>
+    <!-- <figure style="width: 100%; padding: 0; margin: 0; font-size: .8em;">
+    <img id="blogImage" src={blog.image.url} style="width: 100%;"} alt={blog.image.alt} />
+    <figcaption for="blogImage">{blog.image.alt}</figcaption>
+    </figure> -->
+    </header>
+    <slot />
+  </article>
+</BlogLayout>

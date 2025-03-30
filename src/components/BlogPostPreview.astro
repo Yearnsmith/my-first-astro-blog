@@ -1,0 +1,53 @@
+---
+const {
+  url,
+  title,
+  description,
+  previewText
+} = Astro.props;
+---
+<style>
+  li {
+      margin-inline: 1ch;
+      margin-block: 1.5em;
+
+      * {
+				margin: 0;
+			}
+      
+      a {
+        border-radius: 4px;
+        display: block;
+        padding-inline: 1ch;
+        padding-block: .75rem;
+        text-decoration: none;
+
+        &:hover {
+          outline: 1px solid white;
+          background-color: hsl(0 0 100 / 0.1);
+        }
+
+        h3 {
+          font-size: 1.25em;
+          margin-block-end: 0.5em;
+        }
+        .description {
+          font-size: 1em;
+          margin-block-start: 0.5em;
+        }
+
+        .preview {
+          font-size: 85%;
+          font-style: oblique;
+          margin-block-start: 0.5em;
+        }
+      }
+  }
+</style>
+<li>
+  <a href={url}>
+    <h3>{title}</h3>
+    <p class="description">{description}</p>
+    <p class="preview">{previewText.trim().substring(0,160)}&hellip;</p>
+  </a>
+</li>

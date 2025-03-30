@@ -1,0 +1,62 @@
+---
+---
+<style>
+  .hamburger {
+    padding-inline: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+    z-index: 9999;
+    /* outline: 1px solid lime; */
+    @media screen and (min-width: 636px) {
+      display: none;    
+    }
+    line {
+      stroke: white;
+      stroke-width: 10;
+      transition:
+        transform 275ms ease-out,
+        stroke 1250ms,
+        opacity 500ms;
+
+      .hamburger:is(:hover) & {
+        stroke: red;
+        transition:
+          transform 275ms ease-out,
+          stroke 1250ms,
+          opacity 500ms;
+      }
+      .hamburger.active & {
+        &:first-of-type {
+          transform: translateX(30%) translateY(12%) rotateZ(40deg);
+        }
+        &:last-of-type {
+          transform: translateX(-30%) translateY(32%) rotateZ(-40deg);
+        }
+        &:not(:first-of-type, :last-of-type) {
+          opacity: 0;
+        }
+      }
+    }
+
+  }
+</style>
+<svg version="1.1"
+  height="32" width="32"
+  viewbox="0 0 100 100"
+  xmlns="http://www.w3.org/2000/svg"
+  class="hamburger"
+>
+  <line
+    x1="0" y1="22.5"
+    x2="100" y2="22.5"
+  />
+  <line
+    x1="0" y1="50"
+    x2="100" y2="50"
+  />
+  <line
+    x1="0" y1="77.5"
+    x2="100" y2="77.5"
+    stroke="yellow"
+  />
+</svg>

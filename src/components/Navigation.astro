@@ -1,0 +1,89 @@
+---
+---
+<style>
+nav {
+  height: 0px;
+  width: 0px;
+  position: absolute;
+  top: 0;
+  left: -100vw;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* padding-block-start: 7.5vh; */
+  position: absolute;
+  background-color: #555;
+  transition:
+    left 275ms ease-out,
+    height 0s ease-in 300ms,
+    width 0s ease-in 300ms;
+
+  &.expanded {
+    transition: left 275ms ease-out;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  ul {
+    display: flex;
+    list-style-type: none;
+    padding-inline-start: 0;
+    row-gap: 1em;
+    flex-flow: column;
+    justify-content: stretch;
+    align-items: stretch;
+    width: 100%;
+    h2 {
+      margin-block: 0;
+    }
+    h2, a {
+      padding-inline: 1ch;
+      font-size: 2em;
+    }
+    a {
+      padding-block: 0.25rem;
+      text-decoration: none;
+      display: inline-block;
+      width: 100%;
+      &:hover {
+        background-color: hsl(0 100 100 / 0.25);
+      }
+    }
+  }
+  
+  @media screen and (min-width: 636px) {
+    & {
+      position: static;
+      height: fit-content;
+      width: unset;
+      display: block;
+      background-color: transparent;
+      transition: none;
+      padding: 0;
+    }
+    ul {
+      flex-flow: row wrap;
+      column-gap: 1ch;
+      h2 {
+        display: none;
+      }
+      a {
+        font-size: 1.25em;
+        background-color: hsl(0 100 100 / 0.25);
+        border-radius: 4px;
+      }
+    }
+  }
+}
+</style>
+<nav id="main-nav">
+  <ul>
+    <li><h2 style="padding-inline: 2margin-top: 0;">Menu</h2></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/about/">About</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+</nav>
+
+

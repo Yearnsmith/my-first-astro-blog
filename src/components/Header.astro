@@ -1,0 +1,36 @@
+---
+import Hamburger from './Hamburger.astro';
+import Navigation from './Navigation.astro';
+
+const siteTitle = "My First Astro Site";
+---
+  <style>
+    header {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: top;
+      justify-content: space-between;
+      gap: 2ch;
+      padding-inline: 1.75ch;
+
+      h1 {
+        margin-top: 0;
+      }
+
+      .hamburger {
+        margin-inline-end: 0;
+        margin-inline-start: auto;
+      }
+
+      @media screen and (min-width: 636px) {
+        & {
+          align-items: center;
+        }
+      }
+    }
+  </style>
+<header>
+  <h1><a href="/">{siteTitle}</a></h1>
+  <Hamburger />
+  <Navigation />
+</header>

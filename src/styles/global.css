@@ -1,0 +1,14 @@
+:root {
+  --foregroundColour: #eee;
+
+  background-color: #333;
+  color: var(--foregroundColour);
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: var(--foregroundColour);
+  }
+}
