@@ -47,7 +47,13 @@ const {
 <li>
   <a href={url}>
     <h3>{title}</h3>
-    <p class="description">{description}</p>
-    <p class="preview">{previewText.trim().substring(0,160)}&hellip;</p>
+    <p class="description">
+      {description}
+    </p>
+    <p class="preview">
+      {previewText ? (
+        <>{previewText.trim().substring(0,160)}&hellip;</>
+      ) : ''} 
+    </p>
   </a>
 </li>
