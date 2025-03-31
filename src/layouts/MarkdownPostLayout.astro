@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import BlogLayout from './BlogLayout.astro';
+import BlogLayout, { defaultLink } from './BlogLayout.astro';
 const { props } = Astro;
 
 const { frontmatter: blog } = props;
@@ -21,7 +21,10 @@ const pubDate = new Date(blog.pubDate)
     }
   }
 </style>
-<BlogLayout>
+<BlogLayout
+  backLink={blog.prevPost}
+  forwardLink={blog.nextPost}
+>
   <article>
     <header style={`--backgroundImage: url('${blog.image.url}')`}>
       <h1>{blog.title}</h1>

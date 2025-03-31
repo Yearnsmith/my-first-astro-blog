@@ -2,12 +2,14 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 
-const defaultLink = '../blog/';
+export const defaultLink = '../blog/';
 const {
   pageTitle = "My Generic Page",
-  backLink = defaultLink,
-  forwardLink = defaultLink
+  backLink,
+  forwardLink,
 } = Astro.props;
+console.log('links:');
+console.dir(Astro.props);
 ---
 <html lang="en">
 	<head>
@@ -21,8 +23,16 @@ const {
 	<body>
 		<Header />
     <div style="display: flex; justify-content: space-between; padding: 0; margin: 0;">
-      <a href={backLink}>&leftarrow; back</a>
-      <a href={forwardLink}>next &rightarrow;</a>
+		{backLink ? (
+			<a href={backLink}>&blacktriangleleft; previous</a>
+		  ) : (
+			<a href={defaultLink}>&blacktriangleleft; blog home</a>
+		) }
+	  {forwardLink ? (
+		  <a href={forwardLink}>next &blacktriangleright;</a>
+		) : (
+		  <a href={defaultLink}>blog home &blacktriangleright;</a>
+	  ) }
     </div>
 		<main>
 			<slot />

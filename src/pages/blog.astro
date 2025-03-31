@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogPostPreview from '../components/BlogPostPreview.astro';
-import { getEntry, render } from 'astro:content';
 
 const postsGlob = import.meta.glob('./posts/*.md', { eager: true });
-const allPosts = Object.values(postsGlob);
+const allPosts = Object
+	.values(postsGlob);
 ---
 <style>
 	ul {
